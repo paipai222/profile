@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooper Kyungsu Kim | Finance & Data Analytics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #1e3a8a;
+            --accent-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        /* Header & Navigation (수정됨: 배경색 제거 및 텍스트 색상 변경) */
+        header {
+            background: #ffffff; /* 파란색 배경 제거 -> 흰색 */
+            color: var(--text-dark); /* 글자색 변경 */
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 그림자 연하게 조정 */
+            border-bottom: 1px solid var(--border-color); /* 하단 테두리 추가 */
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color); /* 이름 색상 강조 */
+        }
+
+        .header-title p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .header-contact a {
+            color: var(--text-dark); /* 링크 색상 변경 */
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .header-contact a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Container & Grid (수정됨: 컬럼 비율 변경) */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        main {
+            display: grid;
+            /* 왼쪽(본문)을 넓게, 오른쪽(네비)을 좁게 설정 */
+            grid-template-columns: 3fr 1fr;
+            gap: 4rem; /* 간격 조금 더 넓힘 */
+            padding: 3rem 0;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+            /* 오른쪽으로 옮겨지면서 왼쪽 경계선 추가로 디자인 보완 */
+            border-left: 1px solid var(--border-color);
+            padding-left: 2rem;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .nav-section ul {
+            list-style: none;
+        }
+
+        .nav-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-section a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            border-left: 3px solid transparent; /* 오른쪽 네비게이션이므로 왼쪽 border 유지 */
+            padding-left: 0.75rem;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .nav-section a:hover {
+            color: var(--accent-color);
+            border-left-color: var(--accent-color);
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 120px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        /* Experience & Education Cards */
+        .card {
+            background: var(--bg-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(4px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .card-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-top: 0.75rem;
+        }
+
+        .card-achievements {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card-achievements li {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card-achievements li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .project-item {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .project-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-link {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-category {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: all 0.3s;
+        }
+
+        .skill:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #bfdbfe;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+                display: flex;
+                gap: 2rem;
+                margin-bottom: 2rem;
+                flex-wrap: wrap;
+
+                /* 모바일에서는 사이드바가 위로 오는 것이 자연스러우므로 순서 변경 */
+                order: -1;
+
+                border-left: none; /* 모바일에서 경계선 제거 */
+                padding-left: 0;
+            }
+
+            .nav-section {
+                margin-bottom: 1rem;
+                flex: 1;
+                min-width: 200px;
+            }
+
+            .header-contact {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-end; /* 모바일에서 연락처 우측 정렬 */
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header {
+                position: relative;
+                box-shadow: none;
+                border-bottom: 2px solid #000;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                page-break-inside: avoid;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-title">
+                <h1>Cooper Kim, CPA</h1>
+                <p>Finance & Data Analytics Professional</p>
+            </div>
+            <div class="header-contact">
+                <a href="mailto:parj1110@gmail.com">📧 parj1110@gmail.com</a>
+                <a href="tel:+19312496862">📱 +1-931-249-6862</a>
+                <a href="#">📍 Auburn, AL</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <!--
+                LAYOUT 변경:
+                Article(본문)이 먼저 오고, Sidebar(네비게이션)가 뒤에 옵니다.
+                CSS Grid 설정(3fr 1fr)에 의해 본문은 왼쪽, 네비게이션은 오른쪽에 배치됩니다.
+            -->
+
+            <article>
+                <!-- About Section -->
+                <section id="about" class="content-section">
+                    <h2 class="section-title">About</h2>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem; color: var(--text-dark);">
+                        <li>데이터 기반 분석과 자동화 기술을 활용하여 운영 의사결정을 지원하는 분석 전문가입니다.</li>
+                        <li>Georgia Tech 에서 Python 기반 데이터 분석·머신러닝 모델링 경험과 CPA 자격을 보유하고 있습니다.</li>
+                        <li>제조업 및 항공우주 분야에서 원가 구조 분석, 수익성 및 운영 효율성 향상을 데이터 기반으로 주도해왔습니다.</li>
+                    </ul>
+                </section>
+
+                <!-- Work Experience Section -->
+                <section id="experience" class="content-section">
+                    <h2 class="section-title">Work Experience</h2>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Assistant Finance Manager</div>
+                                <div class="card-subtitle">Daesol Material Corp. | Auto-manufacturing</div>
+                            </div>
+                            <div class="card-date">Jun 2024 – Present</div>
+                        </div>
+                        <ul class="card-achievements">
+                            <li>월별 재무 데이터를 기반으로 예산–실적 차이 분석 및 주요 변동 요인 분석</li>
+                            <li>재무·세무 데이터를 통합하여 C-suite 대상 인사이트 중심 리포트를 정기적으로 제공</li>
+                            <li>현금 흐름 최적화: 운영 및 투자활동을 위한 대출 스케쥴 및 배당 계획 수립</li>
+                            <li>사업계획 수립 및 달성을 위한 비용절감 개선 계획 수립</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Cost Accountant</div>
+                                <div class="card-subtitle">Hanwha Cimarron | Aerospace (subsidiary of Hanwha Chemical)</div>
+                            </div>
+                            <div class="card-date">Jul 2022 – Jun 2024</div>
+                        </div>
+                        <ul class="card-achievements">
+                            <li>Cost Center별 SAP-PP(Production Planning) 데이터를 기반으로 비용 구조를 분석하고, MLP(Multi-Layer Perceptron) 모델을 활용한 비용 최적화 분석을 수행</li>
+                            <li>리스 및 Sales & Use Tax 계산 자동화 로직을 설계·구현하고, 반제품(WIP) 및 완제품 원가 평가 모델을 구축하여 제조 원가 데이터 신뢰도 개선</li>
+                            <li>SpaceX, Relativity Space, Dynetics 등 WBS 프로젝트 관리</li>
+                            <li>재무·제조 데이터를 통합하여 비용 편차 원인 및 최적화 포인트를 도출, 운영 및 재무 의사결정 고도화를 지원</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Financial Analyst</div>
+                                <div class="card-subtitle">LG Electronics | Manufacturing</div>
+                            </div>
+                            <div class="card-date">Feb 2021 – Jun 2022</div>
+                        </div>
+                        <ul class="card-achievements">
+                            <li>월별 EBIT 및 순이익 예측을 위한 수익 시뮬레이션 모델 운영(Linear model)</li>
+                            <li>생산량·원가·가격 변동에 따른 시나리오 분석 수행</li>
+                            <li>수익, BEP, P&L에 대한 관리회계 분석 및 KPI 설정을 통한 원가 구조 개선</li>
+                            <li>CAPEX 투자안 IRR/NPV 기반 정량 평가 수행, 자동화·설비·공정 개선 프로젝트의 ROI 분석을 지원</li>
+                            <li>원자재 가격 변동에 따른 제품 모델 재료비 효과 분석(Non-linear Regression model) </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects & Research Section -->
+                <section id="projects" class="content-section">
+                    <h2 class="section-title">Projects & Research</h2>
+
+                    <div class="project-item">
+                        <div class="project-title">🎓 Thesis: Forecasting Labor Demand using Deep Learning</div>
+                        <a href="https://arxiv.org/abs/2503.19048" class="project-link" target="_blank">
+                            📄 Read on arXiv →
+                        </a>
+                        <div class="project-description">
+                            시계열 데이터에 있어서 전통적 Auto-Regressive 모델과 LSTM(Long-Short Term Memory) 모델의
+                            차이점 연구.
+                            <br>Georgia Tech 석사 논문.
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-title">🎓 Thesis: Unemployment Dynamics Forecasting with ML</div>
+                        <a href="https://arxiv.org/abs/2505.01933" class="project-link" target="_blank">
+                            📄 Read on arXiv →
+                        </a>
+                        <div class="project-description">
+                            머신러닝 회귀 모델을 이용한 실업률 예측모델 연구.
+                            <br>Georgia Tech 석사 논문.
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-title">📊 Hanwha Cimarron</div>
+                        <div class="project-description">
+                            PP, MM, FICO, SD 모듈 신규 T-code 생성
+                            <br>MLP 모델을 활용한 생산량/모델에 따른 제조경비 예측 및 비용 최적화
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Regression Model</span>
+                            <span class="tag">ERP Data</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-title">📊 LG Electronics</div>
+                        <div class="project-description">
+                            회귀 모델을 활용한 환율 영향 분석
+                            <br> ERP/MES 데이터 기반 수익성 시뮬레이션
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Regression Model</span>
+                            <span class="tag">ERP Data</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section id="education" class="content-section">
+                    <h2 class="section-title">Education</h2>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Master of Data Analytics</div>
+                                <div class="card-subtitle">Georgia Institute of Technology, College of Engineering</div>
+                            </div>
+                            <div class="card-date">Jan 2023 - Aug 2026 (est.)</div>
+                        </div>
+                        <div class="card-description">
+                            <strong>Coursework:</strong> Data Analytics, Machine Learning for Trading, Digital Twin Simulation (Arena), TensorFlow, Scikit-Learn
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Bachelor of Business Administration</div>
+                                <div class="card-subtitle">Korea University, College of Business</div>
+                            </div>
+                            <div class="card-date">Mar 2013 - Aug 2019</div>
+                        </div>
+                        <div class="card-description">
+                            <strong>Specialization:</strong> Financial Analysis, Audit, Accounting, Tax Accounting, Global Strategy
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills" class="content-section">
+                    <h2 class="section-title">Skills & Certifications</h2>
+
+                    <div class="skills-group">
+                        <div class="skills-category">🏆 Certifications</div>
+                        <div class="skills-list">
+                            <span class="skill">CPA (Washington State)</span>
+                            <span class="skill">Google Data Analyst</span>
+                            <span class="skill">NAVER AI Engineer Boostcourse</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <div class="skills-category">💻 Technical Skills</div>
+                        <div class="skills-list">
+                            <span class="skill">Python</span>
+                            <span class="skill">SQL</span>
+                            <span class="skill">TensorFlow</span>
+                            <span class="skill">Scikit-Learn</span>
+                            <span class="skill">Power BI</span>
+                            <span class="skill">Excel</span>
+                            <span class="skill">SAP</span>
+                            <span class="skill">Arena Simulation</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <div class="skills-category">📊 Expertise Areas</div>
+                        <div class="skills-list">
+                            <span class="skill">Financial Analysis</span>
+                            <span class="skill">Machine Learning</span>
+                            <span class="skill">Cost Accounting</span>
+                            <span class="skill">Budget Management</span>
+                            <span class="skill">Investment Valuation</span>
+                            <span class="skill">Data Visualization</span>
+                            <span class="skill">Forecasting</span>
+                            <span class="skill">Profitability Analysis</span>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Navigation Bar (위치 이동됨) -->
+            <aside class="sidebar">
+                <nav class="nav-section">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Cooper Kim. All rights reserved.</p>
+        <p><a href="mailto:parj1110@gmail.com">Email</a> | <a href="tel:+19312496862">Phone</a></p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.nav-section a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = 'var(--text-dark)';
+                link.style.borderLeftColor = 'transparent';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = 'var(--accent-color)';
+                    link.style.borderLeftColor = 'var(--accent-color)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
