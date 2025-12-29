@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -26,16 +27,16 @@ line-height: 1.6;
 color: var(--text-dark);
 background-color: #ffffff;
 }
-/* Header & Navigation (수정됨: 배경색 제거 및 텍스트 색상 변경) */
+/* Header & Navigation */
 header {
-background: #ffffff; /* 파란색 배경 제거 -> 흰색 */
-color: var(--text-dark); /* 글자색 변경 */
+background: #ffffff;
+color: var(--text-dark);
 padding: 2rem 0;
 position: sticky;
 top: 0;
 z-index: 100;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 그림자 연하게 조정 */
-border-bottom: 1px solid var(--border-color); /* 하단 테두리 추가 */
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+border-bottom: 1px solid var(--border-color);
 }
 .header-container {
 max-width: 1200px;
@@ -49,28 +50,14 @@ align-items: center;
 font-size: 1.8rem;
 font-weight: 700;
 margin-bottom: 0.5rem;
-color: var(--primary-color); /* 이름 색상 강조 */
+color: var(--primary-color);
 }
 .header-title p {
 font-size: 0.95rem;
 opacity: 0.85;
 font-weight: 400;
 }
-.header-contact {
-display: flex;
-gap: 1.5rem;
-font-size: 0.9rem;
-}
-.header-contact a {
-color: var(--text-dark); /* 링크 색상 변경 */
-text-decoration: none;
-transition: color 0.3s;
-font-weight: 500;
-}
-.header-contact a:hover {
-color: var(--accent-color);
-}
-/* Main Container & Grid (수정됨: 컬럼 비율 변경) */
+/* Main Container & Grid */
 .container {
 max-width: 1200px;
 margin: 0 auto;
@@ -78,9 +65,8 @@ padding: 0 2rem;
 }
 main {
 display: grid;
-/* 왼쪽(본문)을 넓게, 오른쪽(네비)을 좁게 설정 */
 grid-template-columns: 3fr 1fr;
-gap: 4rem; /* 간격 조금 더 넓힘 */
+gap: 4rem;
 padding: 3rem 0;
 }
 /* Sidebar Navigation */
@@ -88,7 +74,6 @@ padding: 3rem 0;
 position: sticky;
 top: 120px;
 height: fit-content;
-/* 오른쪽으로 옮겨지면서 왼쪽 경계선 추가로 디자인 보완 */
 border-left: 1px solid var(--border-color);
 padding-left: 2rem;
 }
@@ -114,7 +99,7 @@ color: var(--text-dark);
 text-decoration: none;
 font-size: 0.95rem;
 padding: 0.5rem 0;
-border-left: 3px solid transparent; /* 오른쪽 네비게이션이므로 왼쪽 border 유지 */
+border-left: 3px solid transparent;
 padding-left: 0.75rem;
 transition: all 0.3s;
 display: block;
@@ -137,7 +122,7 @@ padding-bottom: 0.75rem;
 border-bottom: 3px solid var(--accent-color);
 display: inline-block;
 }
-/* Experience & Education Cards */
+/* Cards */
 .card {
 background: var(--bg-light);
 border-left: 4px solid var(--accent-color);
@@ -265,7 +250,7 @@ border-radius: 20px;
 font-size: 0.85rem;
 font-weight: 500;
 }
-/* Value Proposition Grid - 전체 너비 사용 */
+/* Value Proposition Grid */
 .value-grid {
 display: flex;
 flex-direction: column;
@@ -367,13 +352,6 @@ padding: 2rem;
 margin-top: 3rem;
 font-size: 0.9rem;
 }
-footer a {
-color: #bfdbfe;
-text-decoration: none;
-}
-footer a:hover {
-text-decoration: underline;
-}
 /* Responsive Design */
 @media (max-width: 768px) {
 main {
@@ -387,20 +365,14 @@ display: flex;
 gap: 2rem;
 margin-bottom: 2rem;
 flex-wrap: wrap;
-/* 모바일에서는 사이드바가 위로 오는 것이 자연스러우므로 순서 변경 */
 order: -1;
-border-left: none; /* 모바일에서 경계선 제거 */
+border-left: none;
 padding-left: 0;
 }
 .nav-section {
 margin-bottom: 1rem;
 flex: 1;
 min-width: 200px;
-}
-.header-contact {
-flex-direction: column;
-gap: 0.5rem;
-align-items: flex-end; /* 모바일에서 연락처 우측 정렬 */
 }
 .section-title {
 font-size: 1.5rem;
@@ -442,20 +414,10 @@ border: 1px solid #ddd;
 <h1>Kyungsu Kim, CPA</h1>
 <p>Finance & Data Analytics Professional</p>
 </div>
-<div class="header-contact">
-<a href="mailto:parj1110@gmail.com">📧 parj1110@gmail.com</a>
-<a href="tel:+19312496862">📱 +1-931-249-6862</a>
-<a href="#">📍 Auburn, AL</a>
-</div>
 </div>
 </header>
 <div class="container">
 <main>
-<!--
-LAYOUT 변경:
-Article(본문)이 먼저 오고, Sidebar(네비게이션)가 뒤에 옵니다.
-CSS Grid 설정(3fr 1fr)에 의해 본문은 왼쪽, 네비게이션은 오른쪽에 배치됩니다.
--->
 <article>
 <!-- About Section -->
 <section id="about" class="content-section">
@@ -700,7 +662,7 @@ CSS Grid 설정(3fr 1fr)에 의해 본문은 왼쪽, 네비게이션은 오른�
 </div>
 </section>
 </article>
-<!-- Navigation Bar (위치 이동됨) -->
+<!-- Navigation Bar -->
 <aside class="sidebar">
 <nav class="nav-section">
 <h3>Navigation</h3>
@@ -718,10 +680,8 @@ CSS Grid 설정(3fr 1fr)에 의해 본문은 왼쪽, 네비게이션은 오른�
 </div>
 <footer>
 <p>&copy; 2025 Kyungsu Kim. All rights reserved.</p>
-<p><a href="mailto:parj1110@gmail.com">Email</a> | <a href="tel:+19312496862">Phone</a></p>
 </footer>
 <script>
-// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 anchor.addEventListener('click', function (e) {
 e.preventDefault();
@@ -734,7 +694,6 @@ block: 'start'
 }
 });
 });
-// Add active state to navigation based on scroll position
 window.addEventListener('scroll', () => {
 const sections = document.querySelectorAll('.content-section');
 const navLinks = document.querySelectorAll('.nav-section a');
@@ -757,5 +716,3 @@ link.style.borderLeftColor = 'var(--accent-color)';
 </script>
 </body>
 </html>
-
-
